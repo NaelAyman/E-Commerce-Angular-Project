@@ -1,0 +1,15 @@
+.products {
+  padding: 40px 0;
+  overflow: hidden;
+  .categories {
+    margin-bottom: 40px;
+  }
+  .product {
+    width: calc(100% / 4 - 20px);
+    margin-bottom: 26px;
+    transition: all 0.3s ease-in-out;
+    &:not(:nth-child(4n)) {
+      margin-inline-end: 26px;
+    }
+  }
+}
