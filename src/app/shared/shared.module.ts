@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { SelectComponent } from './components/select/select.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,12 +21,14 @@ import { SelectComponent } from './components/select/select.component';
     CommonModule,
     BrowserModule,
     SharedRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     HeaderComponent,
     LoaderComponent,
-    SelectComponent
+    SelectComponent,
+    FormsModule
   ]
 })
 export class SharedModule { }

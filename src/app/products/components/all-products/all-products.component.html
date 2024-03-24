@@ -3,8 +3,8 @@
 		<app-select [title]="'Categories:'" [data]="categories" (selectedValue)="filterCategory($event)"></app-select>
 	</div>
 	<div class="products-list d-flex flex-wrap" *ngIf="!loading">
-		<div class="card product" *ngFor="let product of products">
-			<app-product [data]="product"></app-product>
+		<div class="card product" *ngFor="let product of products" routerLink="/details/{{product.id}}">
+			<app-product [data]="product" (addToCart)="addToCart($event)"></app-product>
 		</div>
 	</div>
 	

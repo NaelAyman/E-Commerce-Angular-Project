@@ -29,10 +29,19 @@
   }
   .card-footer {
     .btn {
+      border-radius: 3px;
       text-transform: capitalize;
     }
     .price {
       font-weight: bold;
+    }
+    .count {
+      .form-control {
+        border-radius: 3px 0 0 3px;
+      }
+      .btn {
+        border-radius: 0 3px 3px 0;
+      }
     }
   }
 }
