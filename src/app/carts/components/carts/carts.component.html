@@ -1,1 +1,55 @@
-<p>carts works!</p>
+<div class="shopping-cart">
+  <div class="cart-header d-flex align-items-center justify-content-between">
+    <div class="head-title">
+      <h2 class="title">Shopping cart</h2>
+      <span class="n-items">
+        you have <span class="text-danger">{{ cartProducts.length }}</span> items in your cart
+      </span>
+    </div>
+
+    <button class="btn btn-outline-danger">Clear Shopping Cart</button>
+  </div>
+  <div class="cart-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of cartProducts">
+            <td>
+              <img src="{{ product.item.image }}" alt="">
+            </td>
+            <td>{{ product.item.title }}</td>
+            <td>{{ product.item.price }} L.E</td>
+            <td>
+              <div class="quantity d-flex align-items-center">
+                <button class="btn btn-info">+</button>
+                <input type="number" class="form-control" value="{{ product.quantity }}" min="1">
+                <button class="btn btn-info">-</button>
+              </div>
+            </td>
+            <td>{{ product.item.price * product.quantity }} l.E</td>
+            <td>
+              <button class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="total">
+      Total: 
+      <span>{{ total }} L.E</span>
+    </div>
+    <button class="btn btn-success">Order Now</button>
+  </div>
+</div>

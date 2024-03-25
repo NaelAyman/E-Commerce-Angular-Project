@@ -1,19 +1,21 @@
 <div class="item">
-  <div class="img">
-    <img class="card-img-top" src="{{ data.image }}" alt="Card image" />
-  </div>
-  <div class="card-body">
-    <h4 class="card-title">{{ data.title }}</h4>
-    <p class="card-text">
-      {{ data.description }}
-    </p>
+  <div class="top-card"  routerLink="/details/{{data.id}}">
+    <div class="img">
+      <img class="card-img-top" src="{{ data.image }}" alt="Card image" />
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">{{ data.title }}</h4>
+      <p class="card-text">
+        {{ data.description }}
+      </p>
+    </div>
   </div>
   <div class="card-footer d-flex align-items-center justify-content-between">
     <a href="#" class="btn btn-success" *ngIf="!addButton" (click)="addButton = true">add to cart</a>
 
     <div class="count d-flex w-50 align-items-center" *ngIf="addButton">
       <input type="number" class="form-control" [(ngModel)]="amount">
-      <button class="btn btn-danger" (click)="add()">Add</button>
+      <button class="btn btn-danger" (click)="add(); addButton = false;">Add</button>
     </div>
 
     <div class="price">{{ data.price }} L.E</div>
