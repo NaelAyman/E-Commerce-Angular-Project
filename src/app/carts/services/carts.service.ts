@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class CartsService {
 
-  constructor() { }
+  baseAPI: any = 'https://fakestoreapi.com/';
+
+  constructor(private _HttpClient: HttpClient) { }
+
+  createNewCart(model: any) {
+    this._HttpClient.post(this.baseAPI + 'carts', model);
+  }
 }

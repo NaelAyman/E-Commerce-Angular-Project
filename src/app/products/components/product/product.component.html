@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="card-footer d-flex align-items-center justify-content-between">
-    <a href="#" class="btn btn-success" *ngIf="!addButton" (click)="addButton = true">add to cart</a>
+    <button class="btn btn-success" *ngIf="!addButton" (click)="addButton = true">add to cart</button>
 
     <div class="count d-flex w-50 align-items-center" *ngIf="addButton">
       <input type="number" class="form-control" [(ngModel)]="amount">

@@ -18,6 +18,7 @@ export class ProductComponent {
       item: this.data,
       quantity: this.amount
     });
+    alert('Added to Cart');
   }
 
 }
