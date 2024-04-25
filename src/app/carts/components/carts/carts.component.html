@@ -3,13 +3,21 @@
     <div class="head-title">
       <h2 class="title">Shopping cart</h2>
       <span class="n-items">
-        you have <span class="text-danger">{{ cartProducts.length }}</span> items in your cart
+        you have
+        <span class="text-danger">{{ cartProducts.length }}</span> items in your
+        cart
       </span>
     </div>
 
-    <button class="btn btn-outline-danger" (click)="clearCart()">Clear Shopping Cart</button>
+    <button
+      class="btn btn-outline-danger"
+      (click)="clearCart()"
+      [disabled]="cartProducts.length == 0"
+    >
+      Clear Shopping Cart
+    </button>
   </div>
-  <div class="cart-body">
+  <div class="cart-body" *ngIf="cartProducts.length > 0; else noData">
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -25,31 +33,49 @@
         <tbody>
           <tr *ngFor="let product of cartProducts; let i = index">
             <td>
-              <img src="{{ product.item.image }}" alt="">
+              <img src="{{ product.item.image }}" alt="" />
             </td>
             <td>{{ product.item.title }}</td>
             <td>{{ product.item.price }} L.E</td>
             <td>
               <div class="quantity d-flex align-items-center">
                 <button class="btn btn-info" (click)="addAmount(i)">+</button>
-                <input type="number" class="form-control text-center" [(ngModel)]="product.quantity" min="1" (change)="detectChanges()">
+                <input
+                  type="number"
+                  class="form-control text-center"
+                  [(ngModel)]="product.quantity"
+                  min="1"
+                  (change)="detectChanges()"
+                />
                 <button class="btn btn-info" (click)="minusAmount(i)">-</button>
               </div>
             </td>
             <td>{{ product.item.price * product.quantity }} l.E</td>
             <td>
-              <button class="btn btn-danger" (click)="deleteCartProduct(i)">Delete</button>
+              <button class="btn btn-danger" (click)="deleteCartProduct(i)">
+                Delete
+              </button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="cart-footer">
+  <div class="cart-footer" *ngIf="cartProducts.length > 0">
     <div class="total">
-      Total: 
+      Total:
       <span>{{ total }} L.E</span>
     </div>
     <button class="btn btn-success" (click)="addCart()">Order Now</button>
   </div>
+
+  <ng-template #noData>
+    <div class="img text-center">
+      <img src="assets/images/not-found.webp" alt="" />
+      <p class="m-0">No Items was Added</p>
+    </div>
+  </ng-template>
+
+  <div class="alert alert-success mt-5" *ngIf="success">Well Done! Your Order Is Successfully Send.</div>
 </div>
+

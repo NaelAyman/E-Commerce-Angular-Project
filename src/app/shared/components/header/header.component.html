@@ -9,7 +9,10 @@
 					<a [routerLink]="['products']"> Products </a>
 				</li>
 				<li class="nav-item">
-					<a [routerLink]="['carts']"> Carts </a>
+					<a [routerLink]="['carts']"> 
+						Carts 
+						<span class="cart-amount">{{ cartCount }}</span>
+					</a>
 				</li>
 			</ul>
 		</div>

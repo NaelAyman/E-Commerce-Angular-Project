@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CartsService } from '../../services/carts.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class CartsComponent implements OnInit {
 
   cartProducts: any[] = [];
   total: any = 0;
+  success: boolean = false;
 
   constructor(private _CartsService: CartsService) {}
 
@@ -61,6 +62,7 @@ export class CartsComponent implements OnInit {
     this.cartProducts = [];
     this.getCartTotalPrice();
     localStorage.setItem('Cart', JSON.stringify(this.cartProducts));
+    this.success = false;
   }
 
   addCart() {
@@ -74,7 +76,9 @@ export class CartsComponent implements OnInit {
       products: products
     }
 
-    // this._CartsService.createNewCart(Model)
+    this._CartsService.createNewCart(Model).subscribe( response => {
+      this.success = true;
+    })
 
     console.log(Model);
   }

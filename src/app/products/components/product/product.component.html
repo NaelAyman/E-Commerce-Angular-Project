@@ -14,10 +14,12 @@
     <button class="btn btn-success" *ngIf="!addButton" (click)="addButton = true">add to cart</button>
 
     <div class="count d-flex w-50 align-items-center" *ngIf="addButton">
-      <input type="number" class="form-control" [(ngModel)]="amount">
+      <input type="number" class="form-control" [(ngModel)]="amount" min="1">
       <button class="btn btn-danger" (click)="add(); addButton = false;">Add</button>
     </div>
 
     <div class="price">{{ data.price }} L.E</div>
   </div>
 </div>
+
+<div class="alert alert-success" *ngIf="sent">Added to Cart</div>

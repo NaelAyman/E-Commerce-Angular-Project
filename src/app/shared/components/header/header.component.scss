@@ -1,32 +1,49 @@
 .header {
-	height: 80px;
-	line-height: 80px;
-	background-color: #00BCD4;
-	.navbar-content {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		.branding {
-			font-size: 40px;
-			font-weight: bold;
-			font-family: cursive;
-			a {
-				color: #FFF;
-			}
-		}
-		.nav-items {
-			display: flex;
-			align-items: center;
-			li {
-				font-size: 18px;
-				&:not(:last-child) {
-					margin-inline-end: 20px;
-				}
-				a {
-					color: #FFF;
-					cursor: pointer;
-				}
-			}
-		}
-	}
+  height: 80px;
+  line-height: 80px;
+  background-color: #00bcd4;
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .branding {
+      font-size: 40px;
+      font-weight: bold;
+      font-family: cursive;
+      a {
+        color: #fff;
+      }
+    }
+    .nav-items {
+      display: flex;
+      align-items: center;
+      li {
+        font-size: 18px;
+        &:not(:last-child) {
+          margin-inline-end: 20px;
+        }
+        a {
+          color: #fff;
+          cursor: pointer;
+					display: block;
+					position: relative;
+          .cart-amount {
+            position: absolute;
+            top: 28px;
+            width: 13px;
+            height: 13px;
+            display: inline-block;
+            right: -11px;
+            font-size: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            color: #00bcd4;
+            line-height: 13px;
+            text-align: center;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
 }

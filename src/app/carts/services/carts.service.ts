@@ -11,6 +11,6 @@ export class CartsService {
   constructor(private _HttpClient: HttpClient) { }
 
   createNewCart(model: any) {
-    this._HttpClient.post(this.baseAPI + 'carts', model);
+    return this._HttpClient.post(this.baseAPI + 'carts', model);
   }
 }
