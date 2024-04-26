@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/products';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent {
-
   @Input() data!: Product;
   @Output() addToCart = new EventEmitter();
 
@@ -16,19 +16,18 @@ export class ProductComponent {
   amount: number = 1;
   sent: boolean = false;
 
-  constructor(private _Router: Router) {}
+  constructor(private _Router: Router, private _SharedService: SharedService) {}
 
   add() {
-    this.addToCart.emit({
-      item: this.data,
-      quantity: this.amount
-    });
-    // alert('Added to Cart');
-    this.sent = true;
-
-    setTimeout(() => {
-      this._Router.navigate(['/carts']);
-    }, 500);
+    // this.addToCart.emit({
+    //   item: this.data,
+    //   quantity: this.amount,
+    // });
+    // // alert('Added to Cart');
+    // this.sent = true;
+    // setTimeout(() => {
+    //   this._Router.navigate(['/carts']);
+    // }, 500);
+    this._SharedService.addToCart(+this.amount)
   }
-
 }
