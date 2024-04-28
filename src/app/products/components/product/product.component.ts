@@ -11,6 +11,7 @@ import { SharedService } from 'src/app/shared/services/shared.service';
 export class ProductComponent {
   @Input() data!: Product;
   @Output() addToCart = new EventEmitter();
+  @Output() successMsg = new EventEmitter();
 
   addButton: boolean = false;
   amount: number = 1;
@@ -19,15 +20,11 @@ export class ProductComponent {
   constructor(private _Router: Router, private _SharedService: SharedService) {}
 
   add() {
-    // this.addToCart.emit({
-    //   item: this.data,
-    //   quantity: this.amount,
-    // });
-    // // alert('Added to Cart');
-    // this.sent = true;
-    // setTimeout(() => {
-    //   this._Router.navigate(['/carts']);
-    // }, 500);
+    this.addToCart.emit({
+      item: this.data,
+      quantity: this.amount,
+    });
+    
     this._SharedService.addToCart(+this.amount)
   }
 }

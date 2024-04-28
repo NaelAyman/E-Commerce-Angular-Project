@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/products';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-products',
@@ -12,9 +13,10 @@ export class AllProductsComponent {
   products: Product[] = [];
   categories: string[] = [];
   loading: boolean = false;
+  sent: boolean = false;
   cartProducts: any[] = [];
 
-  constructor(private service: ProductsService) {}
+  constructor(private service: ProductsService, private _Router: Router) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -88,8 +90,14 @@ export class AllProductsComponent {
       if(existItem) {
         alert('This Item Already Existed');
       } else {
+        this.sent = true
+
         this.cartProducts.push(event);
         localStorage.setItem('Cart', JSON.stringify(this.cartProducts));
+        
+        setTimeout(() => {
+          this._Router.navigate(['/carts']);
+        }, 500);
       }
     }
   }

@@ -18,18 +18,20 @@ export class SharedService {
     }
     let currentLength = this.cartItemsLength.getValue();
     this.cartItemsLength.next(currentLength + amount);
+
+    localStorage.setItem('CartCount', JSON.stringify(amount));
   }
 
   // ---------------------------------------------------------
-  isAdmin = new BehaviorSubject(false); // for write/update
-  isAdmin$ = this.cartItemsLength.asObservable(); // for read only
+  // isAdmin = new BehaviorSubject(false); // for write/update
+  // isAdmin$ = this.cartItemsLength.asObservable(); // for read only
 
-  getIsAdmin() {
-    let url = 'assets/isAdmin.json';
-    return this.HttpClient.get(url);
-  }
+  // getIsAdmin() {
+  //   let url = 'assets/isAdmin.json';
+  //   return this.HttpClient.get(url);
+  // }
 
-  updateIsAdmin(value: boolean) {
-    this.isAdmin.next(value);
-  }
+  // updateIsAdmin(value: boolean) {
+  //   this.isAdmin.next(value);
+  // }
 }
